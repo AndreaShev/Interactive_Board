@@ -1,27 +1,33 @@
-const board = document.querySelector("#board");
-colors = ["red", "blue", "yellow", "green", "purple", "white", "brown", "pink"];
-const SQUARES_NUMBER = 500;
+ document.addEventListener('DOMContentLoaded', function() {
+      const board = document.querySelector("#board");
+      const colors = ["red", "blue", "yellow", "green", "purple", "white", "brown", "pink"];
+      const SQUARES_NUMBER = 500;
+      const fragment = document.createDocumentFragment();
 
-for (let i = 0; i < SQUARES_NUMBER; i++) {
-  const square = document.createElement("div");
-  square.classList.add("square");
-  square.addEventListener("mouseover", setColor);
-  square.addEventListener("mouseleave", removeColor);
-  board.append(square);
-}
+      for (let i = 0; i < SQUARES_NUMBER; i++) {
+        const square = document.createElement("div");
+        square.classList.add("square");
+        square.addEventListener("mouseover", setColor);
+        square.addEventListener("mouseleave", removeColor);
+        fragment.appendChild(square);
+      }
 
-function setColor(event) {
-  const element = event.target;
-  const color = getRandomColor();
-  element.style.backgroundColor = color;
-  element.style.boxShadow = `0 0 2px ${color}, 0 0 10px ${color}`;
-}
-function removeColor(event) {
-  const element = event.target;
-  element.style.backgroundColor = "#1d1d1d";
-  element.style.boxShadow = `0 0 2px #000`;
-}
+      board.appendChild(fragment);
 
-function getRandomColor() {
-  return colors[Math.floor(Math.random() * colors.length)];
-}
+      function setColor(event) {
+        const element = event.currentTarget;
+        const color = getRandomColor();
+        element.style.backgroundColor = color;
+        element.style.boxShadow = `0 0 2px ${color}, 0 0 10px ${color}`;
+      }
+
+      function removeColor(event) {
+        const element = event.currentTarget;
+        element.style.backgroundColor = "#1d1d1d";
+        element.style.boxShadow = `0 0 2px #000`;
+      }
+
+      function getRandomColor() {
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+    });
