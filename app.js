@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   // Задаем количество квадратов
-  const SQUARES_NUMBER = 500;
+  const SQUARES_NUMBER = window.innerWidth < 768 ? 250 : 500;
 
   // Создаем DocumentFragment для оптимизации добавления элементов в DOM
   const fragment = document.createDocumentFragment();

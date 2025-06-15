@@ -22,8 +22,8 @@
     }
 
     .square {
-      width: 16px;
-      height: 16px;
+    width: clamp(12px, 2vw, 16px);
+  height: clamp(12px, 2vw, 16px);
       background: var(--square-color);
       margin: 2px;
       box-shadow: 0 0 2px var(--square-shadow);
